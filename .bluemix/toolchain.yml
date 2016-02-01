@@ -34,7 +34,7 @@ ui-repo:
 ui-build:
  serviceId: pipeline
  parameters: 
-   pipeline_yml: -include ui.pipeline.yml 
+   pipeline_yml: "${file:ui.pipeline.yml}" 
    env:
      REPO_URL: "{{ui-repo.parameters.repo-url}}"
      SAUCE_USER: "{{test.parameters.username}}"
@@ -53,7 +53,7 @@ ui-build:
 catalog-api-build:
  serviceId: pipeline
  parameters: 
-   pipeline_yml: -include catalog-api.pipeline.yml
+   pipeline_yml: "${file:catalog-api.pipeline.yml}"
    env:
      REPO_URL: "{{catalog-api-repo.parameters.repo-url}}"
      APP_NAME: "{{deploy.parameters.catalog-app-name}}"
@@ -70,7 +70,7 @@ catalog-api-build:
 orders-api-build:
  serviceId: pipeline
  parameters: 
-   pipeline_yml: -include order-api.pipeline.yml
+   pipeline_yml: "${file:order-api.pipeline.yml}"
    env:
      REPO_URL: "{{orders-api-repo.parameters.repo-url}}"
      APP_NAME: "{{deploy.parameters.orders-app-name}}"
@@ -87,12 +87,12 @@ orders-api-build:
 #Slack
 messaging:
   serviceId: slack
-  $include: slack.yml
+  <<: -include slack.yml
 
 #Sauce Laps
 test:
   serviceId: saucelabs
-  $include: saucelabs.yml
+  <<: -include saucelabs.yml
 
 
 #Deployment
