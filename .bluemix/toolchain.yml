@@ -87,12 +87,12 @@ orders-api-build:
 #Slack
 messaging:
   serviceId: slack
-  <<: -include slack.yml
+  <<: !include slack.yml
 
 #Sauce Laps
 test:
   serviceId: saucelabs
-  <<: -include saucelabs.yml
+  <<: !include saucelabs.yml
 
 
 #Deployment
