@@ -1,0 +1,14 @@
+{
+	"ui-repo": {
+		"serviceId": "pipeline",
+		"metadata": {"as":"is from catalog"},
+		"schema": {"example": "converted to v4"},
+		"parameters": {}
+	},
+	"deploy": {
+		"serviceId-category": "pipeline",
+		"schema": {},
+		"parameters": {}
+	}
+}
+
