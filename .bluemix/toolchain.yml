@@ -10,21 +10,21 @@ required:
 
 # Github repos
 catalog-api-repo:
-  serviceId: github
+  service_id: github
   parameters:
     repo_name: "{{name}}-catalog-api"
     fork: skaegi/Microservices_CatalogAPI
     has_issues: false
 
 orders-api-repo:
-  serviceId: github
+  service_id: github
   parameters:
     repo_name: "{{name}}-order-api"
     fork: skaegi/Microservices_OrdersAPI
     has_issues: false
 
 ui-repo:
-  serviceId: github
+  service_id: github
   parameters:
     repo_name: "{{name}}-ui"
     fork: skaegi/Microservices_UI
@@ -32,7 +32,7 @@ ui-repo:
 
 # Pipelines
 ui-build:
- serviceId: pipeline
+ service_id: pipeline
  parameters: 
    pipeline_yml: "${file:ui.pipeline.yml}" 
    env:
@@ -51,7 +51,7 @@ ui-build:
      PROD_REGION_NAME: "{{deploy.parameters.prod-region}}"
 
 catalog-api-build:
- serviceId: pipeline
+ service_id: pipeline
  parameters: 
    pipeline_yml: "${file:catalog-api.pipeline.yml}"
    env:
@@ -68,7 +68,7 @@ catalog-api-build:
      PROD_REGION_NAME: "{{deploy.parameters.prod-region}}"
 
 orders-api-build:
- serviceId: pipeline
+ service_id: pipeline
  parameters: 
    pipeline_yml: "${file:order-api.pipeline.yml}"
    env:
@@ -86,19 +86,19 @@ orders-api-build:
 
 #Slack
 messaging:
-  serviceId: slack
+  service_id: slack
   <<: !include
     filename: slack.yml
 
 #Sauce Laps
 test:
-  serviceId: saucelabs
+  service_id: saucelabs
   <<: !include
     filename: saucelabs.yml
 
 #Deployment
 deploy:
-  serviceId-category: pipeline
+  service-category-id: pipeline
   schema: deploy.json
   parameters:
     dev-space: dev
