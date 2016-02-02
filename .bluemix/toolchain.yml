@@ -10,21 +10,21 @@ required:
 
 # Github repos
 catalog-api-repo:
-  service-id: github
+  service_id: github
   parameters:
     repo_name: "{{name}}-catalog-api"
     fork: skaegi/Microservices_CatalogAPI
     has_issues: false
 
 orders-api-repo:
-  service-id: github
+  service_id: github
   parameters:
     repo_name: "{{name}}-order-api"
     fork: skaegi/Microservices_OrdersAPI
     has_issues: false
 
 ui-repo:
-  service-id: github
+  service_id: github
   parameters:
     repo_name: "{{name}}-ui"
     fork: skaegi/Microservices_UI
@@ -32,7 +32,7 @@ ui-repo:
 
 # Pipelines
 ui-build:
- service-id: pipeline
+ service_id: pipeline
  parameters: 
    pipeline_yml: "${file:ui.pipeline.yml}" 
    env:
@@ -51,7 +51,7 @@ ui-build:
      PROD_REGION_NAME: "{{deploy.parameters.prod-region}}"
 
 catalog-api-build:
- service-id: pipeline
+ service_id: pipeline
  parameters: 
    pipeline_yml: "${file:catalog-api.pipeline.yml}"
    env:
@@ -68,7 +68,7 @@ catalog-api-build:
      PROD_REGION_NAME: "{{deploy.parameters.prod-region}}"
 
 orders-api-build:
- service-id: pipeline
+ service_id: pipeline
  parameters: 
    pipeline_yml: "${file:order-api.pipeline.yml}"
    env:
@@ -86,13 +86,13 @@ orders-api-build:
 
 #Slack
 messaging:
-  service-id: slack
+  service_id: slack
   <<: !include
     filename: slack.yml
 
 #Sauce Laps
 test:
-  service-id: saucelabs
+  service_id: saucelabs
   <<: !include
     filename: saucelabs.yml
 
