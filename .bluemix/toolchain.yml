@@ -98,7 +98,7 @@ test:
 
 #Deployment
 deploy:
-  service-category-id: pipeline
+  service-category: pipeline
   schema: deploy.json
   parameters:
     dev-space: dev
